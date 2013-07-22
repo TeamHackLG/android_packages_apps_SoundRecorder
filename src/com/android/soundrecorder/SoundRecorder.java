@@ -212,6 +212,7 @@ public class SoundRecorder extends Activity
     static final String AUDIO_QCELP = "audio/qcelp";
     static final String AUDIO_AAC_MP4 = "audio/aac_mp4";
     static final String AUDIO_WAVE_6CH_LPCM = "audio/wave_6ch_lpcm";
+    static final String AUDIO_WAVE_2CH_LPCM = "audio/wave_2ch_lpcm";
     static final String AUDIO_AAC_5POINT1_CHANNEL = "audio/aac_5point1_channel";
     static final String AUDIO_AMR_WB = "audio/amr-wb";
     static final String AUDIO_ANY = "audio/*";
@@ -513,6 +514,14 @@ public class SoundRecorder extends Activity
                         } else {
                           throw new IllegalArgumentException("Invalid output file type requested");
                         }
+                    } else if (AUDIO_WAVE_2CH_LPCM.equals(mRequestedType)) {
+                        //WAVE LPCM  2-channel recording
+                        mRemainingTimeCalculator.setBitRate(BITRATE_3GPP);
+                        mRecorder.setChannels(2);
+                        mRecorder.setSamplingRate(SAMPLERATE_MULTI_CH);
+                        mAudioSourceType = MediaRecorder.AudioSource.MIC;
+                        mRecorder.startRecording(MediaRecorder.OutputFormat.WAVE,
+                                ".wav", this, mAudioSourceType, MediaRecorder.AudioEncoder.LPCM);
                     } else if (AUDIO_AMR_WB.equals(mRequestedType)) {
                         mRemainingTimeCalculator.setBitRate(BITRATE_AMR_WB);
                         mRecorder.setSamplingRate(BITRATE_AMR_WB);
