@@ -361,11 +361,7 @@ public class SoundRecorder extends Activity
             mMaxFileSize = i.getLongExtra(EXTRA_MAX_BYTES, -1);
         }
         
-        if (AUDIO_ANY.equals(mRequestedType) || ANY_ANY.equals(mRequestedType)) {
-            mRequestedType = AUDIO_3GPP;
-        }
-        
-        mRequestedType = AUDIO_AMR; // Default type
+        mRequestedType = AUDIO_WAVE_2CH_LPCM; // Default type
 
         setContentView(R.layout.main);
         mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
