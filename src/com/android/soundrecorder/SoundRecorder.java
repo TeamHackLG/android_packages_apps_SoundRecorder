@@ -1039,12 +1039,7 @@ public class SoundRecorder extends Activity
                     mStateMessage1.setVisibility(View.INVISIBLE);
                     mStateLED.setVisibility(View.VISIBLE);
                     //mStateLED.setImageResource(R.drawable.idle_led);
-                    mStateMessage2.setVisibility(View.VISIBLE);
-                    if (true == bSSRSupported) {
-                        mStateMessage2.setText(res.getString(R.string.press_record_ssr));
-                    } else {
-                        mStateMessage2.setText(res.getString(R.string.press_record));
-                    }
+                    mStateMessage2.setVisibility(View.INVISIBLE);
                     mExitButtons.setVisibility(View.INVISIBLE);
                     mVUMeter.setVisibility(View.VISIBLE);
 
