@@ -320,8 +320,13 @@ public class SoundRecorder extends Activity
         if (AUDIO_ANY.equals(mRequestedType) || ANY_ANY.equals(mRequestedType)) {
             mRequestedType = AUDIO_3GPP;
         }
-        
-        mRequestedType = AUDIO_AMR; // Default type
+
+        String defaultwave2ch = SystemProperties.get("ro.soundrecorder.default_wav2ch");
+        if (defaultwave2ch.contains("true")) {
+            mRequestedType = AUDIO_WAVE_2CH_LPCM;
+        } else {
+            mRequestedType = AUDIO_AMR;
+        }
 
         setContentView(R.layout.main);
         mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
